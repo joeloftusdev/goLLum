@@ -10,6 +10,9 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+
+	"golang.org/x/text/cases"
+	"golang.org/x/text/language"
 )
 
 type Config struct {
@@ -69,8 +72,8 @@ func main() {
 }
 
 func chat(config Config, prompt string) {
-	language := detectLanguage(prompt)
-	if language == "" {
+	scriptLanguage := detectLanguage(prompt)
+	if scriptLanguage == "" {
 		fmt.Println("Unsupported language")
 		return
 	}
@@ -79,7 +82,7 @@ func chat(config Config, prompt string) {
 	outputDir, _ := reader.ReadString('\n')
 	outputDir = strings.TrimSpace(outputDir)
 
-	scriptFilename := fmt.Sprintf("script%s", languageExtensions[language])
+	scriptFilename := fmt.Sprintf("script%s", languageExtensions[scriptLanguage])
 	scriptPath := filepath.Join(outputDir, scriptFilename)
 	responseText, err := generateScript(config, prompt)
 	if err != nil {
@@ -91,7 +94,7 @@ func chat(config Config, prompt string) {
 		return
 	}
 
-	fmt.Printf("%s script generated in %s\n", strings.Title(language), outputDir)
+	fmt.Printf("%s script generated in %s\n", cases.Title(language.Und).String(scriptLanguage), outputDir)
 }
 
 func detectLanguage(input string) string {
@@ -126,13 +129,13 @@ func generateScript(config Config, prompt string) (string, error) {
 		return "", err
 	}
 
-	var responseText strings.Builder
+	var code strings.Builder
 	for _, choice := range response.Choices {
-		responseText.WriteString(strings.TrimSpace(choice.Text))
-		responseText.WriteString("\n")
+		code.WriteString(strings.TrimSpace(choice.Text))
+		code.WriteString("\n")
 	}
 
-	return responseText.String(), nil
+	return code.String(), nil
 }
 
 func saveScript(path, content string) error {
