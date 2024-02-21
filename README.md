@@ -1,0 +1,50 @@
+# goLLum: Copilot Script Generator 
+![gollumapp](https://github.com/joeloftusdev/gollum/assets/152509645/a62b2856-c60d-45f9-95c1-69748d66df15)
+
+Gollum is a command-line tool designed to generate scripts in various programming languages. It utilizes the OpenAI GPT-3.5 model to understand prompts and generate corresponding scripts. With Gollum, you can quickly prototype scripts for a variety of purposes without the need to manually write code.
+
+## Features
+
+- Generates scripts based on user prompts
+- Supports: Python, Go, Ruby, Perl, Bash, PowerShell, JavaScript, TypeScript, PHP, and Lua.
+- Customizable output directory for generated scripts.
+
+## Installation
+
+To use Gollum, you need to have Go installed on your system. Once you have Go installed, you can install Gollum using the following command:
+
+```bash
+go install github.com/joeloftusdev/gollum@latest
+```
+
+
+## Usage
+
+1. Create a text file named `apikey.txt` and paste your OpenAI API key into it.
+2. Run Gollum by executing the following command in your terminal:
+
+```bash
+gollum
+```
+
+3. Follow the on-screen instructions. Enter your prompt when prompted, and Gollum will generate the corresponding script for you.
+
+## Example
+
+```bash
+Welcome to Gollum. Generate a script or type 'quit' to exit.
+You: Write a Python script to calculate factorial of a number. # Keyword Python will generate a .py file
+Script generated. Please specify the output directory:
+</path/to/your/scripts>
+Python script generated in </path/to/your/scripts>
+```
+
+## Dependencies
+
+- [Go](golang.org): Go package providing language support and text processing tools.
+- [OpenAI GPT-3.5](https://openai.com): AI model used for goLLum.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
