@@ -11,7 +11,7 @@ Gollum is a command-line tool designed to generate scripts in various programmin
 
 
 ## Usage
-To use Gollum, you need to have Go installed on your system. Once you have Go installed, you can install Gollum using the following command:
+To use Gollum, you need to have Go installed on your system. Once you have Go installed, you can install Gollum using the following commands:
 
 1. Clone the project
 2. Create a text file in the project directory named `apikey.txt` and paste your [OpenAI API key](https://platform.openai.com/api-keys) into it.
