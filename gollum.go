@@ -50,31 +50,6 @@ var languageExtensions = map[string]string{
 //go:embed apikey.txt
 var key embed.FS
 
-func main() {
-	apiKey, err := readAPIKey("apikey.txt")
-	if err != nil {
-		fmt.Println("Error reading API key:", err)
-		return
-	}
-	apiURL := "https://api.openai.com/v1/completions"
-	config := NewConfig(apiKey, apiURL)
-
-	fmt.Println("Welcome to goLLum. Generate a script or type 'quit' to exit.")
-
-	for {
-		fmt.Print("You: ")
-		reader := bufio.NewReader(os.Stdin)
-		userInput, _ := reader.ReadString('\n')
-		userInput = strings.TrimSpace(userInput)
-
-		if userInput == "quit" {
-			break
-		}
-
-		chat(config, userInput)
-	}
-}
-
 func chat(config Config, prompt string) {
 	scriptLanguage := detectLanguage(prompt)
 	if scriptLanguage == "" {
@@ -211,4 +186,29 @@ func readAPIKey(filename string) (string, error) {
 	}
 	apiKey := strings.TrimSpace(string(content))
 	return apiKey, nil
+}
+
+func main() {
+	apiKey, err := readAPIKey("apikey.txt")
+	if err != nil {
+		fmt.Println("Error reading API key:", err)
+		return
+	}
+	apiURL := "https://api.openai.com/v1/completions"
+	config := NewConfig(apiKey, apiURL)
+
+	fmt.Println("Welcome to goLLum. Generate a script or type 'quit' to exit.")
+
+	for {
+		fmt.Print("You: ")
+		reader := bufio.NewReader(os.Stdin)
+		userInput, _ := reader.ReadString('\n')
+		userInput = strings.TrimSpace(userInput)
+
+		if userInput == "quit" {
+			break
+		}
+
+		chat(config, userInput)
+	}
 }
