@@ -1,4 +1,4 @@
-module main.go
+module gollum
 
 go 1.21.6
 

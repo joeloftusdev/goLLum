@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"bytes"
+	"embed"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -45,6 +46,9 @@ var languageExtensions = map[string]string{
 	"php":        ".php",
 	"lua":        ".lua",
 }
+
+//go:embed apikey.txt
+var key embed.FS
 
 func main() {
 	apiKey, err := readAPIKey("apikey.txt")
@@ -106,7 +110,7 @@ func detectLanguage(input string) string {
 		return "ruby"
 	} else if strings.Contains(input, "perl") {
 		return "perl"
-	} else if strings.Contains(input, "bash") || strings.Contains(input, "sh") {
+	} else if strings.Contains(input, "bash") {
 		return "bash"
 	} else if strings.Contains(input, "powershell") {
 		return "powershell"
@@ -118,6 +122,8 @@ func detectLanguage(input string) string {
 		return "php"
 	} else if strings.Contains(input, "lua") {
 		return "lua"
+	} else if strings.Contains(input, "go") || strings.Contains(input, "golang") {
+		return "go"
 	}
 
 	return ""
@@ -199,7 +205,7 @@ func getResponse(config Config, prompt string) (ConversationResponse, error) {
 }
 
 func readAPIKey(filename string) (string, error) {
-	content, err := os.ReadFile(filename)
+	content, err := key.ReadFile(filename)
 	if err != nil {
 		return "", err
 	}
