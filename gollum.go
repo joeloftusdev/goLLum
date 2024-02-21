@@ -59,7 +59,7 @@ func main() {
 	apiURL := "https://api.openai.com/v1/completions"
 	config := NewConfig(apiKey, apiURL)
 
-	fmt.Println("Welcome to Gollum. Generate a script or type 'quit' to exit.")
+	fmt.Println("Welcome to goLLum. Generate a script or type 'quit' to exit.")
 
 	for {
 		fmt.Print("You: ")
