@@ -9,25 +9,21 @@ Gollum is a command-line tool designed to generate scripts in various programmin
 - Supports: Python, Go, Ruby, Perl, Bash, PowerShell, JavaScript, TypeScript, PHP, and Lua.
 - Customizable output directory for generated scripts.
 
-## Installation
-
-To use Gollum, you need to have Go installed on your system. Once you have Go installed, you can install Gollum using the following command:
-
-```bash
-go install github.com/joeloftusdev/gollum@latest
-```
-
 
 ## Usage
+To use Gollum, you need to have Go installed on your system. Once you have Go installed, you can install Gollum using the following command:
 
-1. Create a text file named `apikey.txt` and paste your OpenAI API key into it.
-2. Run Gollum by executing the following command in your terminal:
-
+1. Clone the project
+2. Create a text file named `apikey.txt` and paste your OpenAI API key into it.
+3. install Gollum by executing the following command in your terminal:
+```bash
+go install
+```
+4. Run Gollum from anywhere on your pc by executing the following command:
 ```bash
 gollum
 ```
-
-3. Follow the on-screen instructions. Enter your prompt when prompted, and Gollum will generate the corresponding script for you.
+5. Follow the on-screen instructions. Enter your prompt when prompted, and Gollum will generate the corresponding script for you.
 
 ## Example
 
