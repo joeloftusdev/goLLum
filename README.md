@@ -14,8 +14,8 @@ Gollum is a command-line tool designed to generate scripts in various programmin
 To use Gollum, you need to have Go installed on your system. Once you have Go installed, you can install Gollum using the following command:
 
 1. Clone the project
-2. Create a text file named `apikey.txt` and paste your OpenAI API key into it.
-3. install Gollum by executing the following command in your terminal:
+2. Create a text file in the project directory named `apikey.txt` and paste your [OpenAI API key](https://platform.openai.com/api-keys) into it.
+3. Install Gollum by executing the following command in your terminal:
 ```bash
 go install
 ```
@@ -23,7 +23,7 @@ go install
 ```bash
 gollum
 ```
-5. Follow the on-screen instructions. Enter your prompt when prompted, and Gollum will generate the corresponding script for you.
+5. Enter your prompt when prompted, and Gollum will generate the corresponding script for you.
 
 ## Example
 
@@ -37,7 +37,7 @@ Python script generated in </path/to/your/scripts>
 
 ## Dependencies
 
-- [Go](golang.org): Go package providing language support and text processing tools.
+- [Go](golang.org).
 - [OpenAI GPT-3.5](https://openai.com): AI model used for goLLum.
 
 ## License
