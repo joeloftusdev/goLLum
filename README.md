@@ -28,7 +28,7 @@ gollum
 ## Example
 
 ```bash
-Welcome to Gollum. Generate a script or type 'quit' to exit.
+Welcome to goLLum. Generate a script or type 'quit' to exit.
 You: Write a Python script to calculate factorial of a number. # Keyword Python will generate a .py file
 Script generated. Please specify the output directory:
 </path/to/your/scripts>
