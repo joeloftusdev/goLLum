@@ -154,12 +154,17 @@ func saveScript(path, content string) error {
 }
 
 func getResponse(config Config, prompt string) (ConversationResponse, error) {
-	maxTokens := 1000
 
 	requestBody, err := json.Marshal(map[string]interface{}{
-		"model":      "gpt-3.5-turbo-instruct",
-		"prompt":     "```" + prompt + "\n```",
-		"max_tokens": maxTokens,
+		"model":             "gpt-3.5-turbo-instruct",
+		"prompt":            "```" + prompt + "\n```",
+		"top_p":             1,
+		"stop":              "```",
+		"temperature":       0,
+		"suffix":            "\n```",
+		"max_tokens":        1000,
+		"presence_penalty":  0,
+		"frequency_penalty": 0,
 	})
 	if err != nil {
 		return ConversationResponse{}, err
