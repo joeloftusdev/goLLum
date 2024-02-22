@@ -1,4 +1,4 @@
-# goLLum: Copilot Script Generator 
+# goLLum: AI Script Generator 
 ![gollumapp](https://github.com/joeloftusdev/gollum/assets/152509645/a62b2856-c60d-45f9-95c1-69748d66df15)
 
 Gollum is a command-line tool designed to generate scripts in various programming languages. It utilizes the OpenAI GPT-3.5 model to understand prompts and generate corresponding scripts. With Gollum, you can quickly prototype scripts for a variety of purposes without the need to manually write code.
