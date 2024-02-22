@@ -56,12 +56,12 @@ func chat(config Config, prompt string) {
 		fmt.Println("Unsupported language")
 		return
 	}
-	fmt.Println("Script generated. Please specify the output directory:")
+	fmt.Println("Please specify the output directory:")
 	reader := bufio.NewReader(os.Stdin)
 	outputDir, _ := reader.ReadString('\n')
 	outputDir = strings.TrimSpace(outputDir)
 
-	scriptFilename := fmt.Sprintf("script%s", languageExtensions[scriptLanguage])
+	scriptFilename := fmt.Sprintf("gollum_script%s", languageExtensions[scriptLanguage])
 	scriptPath := filepath.Join(outputDir, scriptFilename)
 	responseText, err := generateScript(config, prompt)
 	if err != nil {
@@ -126,10 +126,27 @@ func saveScript(path, content string) error {
 	}
 	defer f.Close()
 
-	_, err = f.WriteString(content)
-	if err != nil {
-		return err
+	total := len(content)
+	barWidth := 40
+	barChar := "="
+
+	writer := bufio.NewWriter(f)
+
+	for i, char := range content {
+		_, err := writer.WriteRune(char)
+		if err != nil {
+			return err
+		}
+
+		progress := float64(i+1) / float64(total)
+		numBarChars := int(progress * float64(barWidth))
+		bar := strings.Repeat(barChar, numBarChars) + strings.Repeat(" ", barWidth-numBarChars)
+
+		print("\r[", bar, "] ", int(progress*100), "%")
 	}
+
+	writer.Flush()
+	println()
 
 	return nil
 }
