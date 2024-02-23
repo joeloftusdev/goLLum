@@ -25,11 +25,11 @@ gollum
 ```
 5. Enter your prompt when prompted, and Gollum will generate the corresponding script for you.
 
-## Example
+## Recommended Prompt Usage
 
 ```bash
 Welcome to goLLum. Generate a script or type 'quit' to exit.
-You: Write a Python script to calculate factorial of a number. # Keyword Python will generate a .py file
+You: Generate a Python script to calculate factorial of a number. # Keyword Python will generate a .py file
 Script generated. Please specify the output directory:
 </path/to/your/scripts>
 Python script generated in </path/to/your/scripts>
